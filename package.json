@@ -1,0 +1,110 @@
+{
+  "name": "@deloz/snowflake",
+  "version": "0.0.1",
+  "description": "A TypeScript library for generating Snowflake IDs.",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/deloz/snowflake.git"
+  },
+  "keywords": [
+    "snowflake",
+    "id",
+    "generator",
+    "typescript"
+  ],
+  "author": {
+    "name": "Deloz",
+    "email": "npmbot@gmail.com",
+    "url": "https://deloz.net"
+  },
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/deloz/snowflake/issues"
+  },
+  "homepage": "https://github.com/deloz/snowflake#readme",
+  "main": "dist/Snowflake.js",
+  "types": "dist/Snowflake.d.ts",
+  "module": "./dist/Snowflake.mjs",
+  "scripts": {
+    "build": "tsup",
+    "dev": "tsup --watch",
+    "format": "prettier --write .",
+    "semantic-release": "semantic-release"
+  },
+  "exports": {
+    ".": {
+      "import": "./dist/index.mjs",
+      "require": "./dist/index.js",
+      "types": "./dist/index.d.ts"
+    },
+    "./package.json": "./package.json"
+  },
+  "typesVersions": {
+    "*": {}
+  },
+  "files": [
+    "dist/**/*",
+    "LICENSE",
+    "README.md",
+    "README_ZH.md"
+  ],
+  "devDependencies": {
+    "conventional-changelog-conventionalcommits": "^6.1.0",
+    "prettier": "^3.0.2",
+    "semantic-release": "^21.0.7",
+    "tsup": "^7.2.0",
+    "typescript": "^5.1.6"
+  },
+  "publishConfig": {
+    "access": "public"
+  },
+  "release": {
+    "branches": [
+      "main"
+    ],
+    "plugins": [
+      [
+        "@semantic-release/commit-analyzer",
+        {
+          "preset": "conventionalcommits",
+          "releaseRules": [
+            {
+              "type": "build",
+              "scope": "deps",
+              "release": "patch"
+            }
+          ]
+        }
+      ],
+      [
+        "@semantic-release/release-notes-generator",
+        {
+          "preset": "conventionalcommits",
+          "presetConfig": {
+            "types": [
+              {
+                "type": "feat",
+                "section": "Features"
+              },
+              {
+                "type": "fix",
+                "section": "Bug Fixes"
+              },
+              {
+                "type": "docs",
+                "section": "Documentation Changes"
+              },
+              {
+                "type": "build",
+                "section": "Dependencies and Other Build Updates",
+                "hidden": false
+              }
+            ]
+          }
+        }
+      ],
+      "@semantic-release/npm",
+      "@semantic-release/github"
+    ]
+  }
+}
