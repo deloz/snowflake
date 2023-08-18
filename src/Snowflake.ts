@@ -10,19 +10,23 @@ export default class Snowflake {
   private readonly epoch: number; // Epoch as a timestamp
 
   constructor(
-    datacenterId: number,
-    machineId: number,
+    machineId: number = Math.floor(
+      Math.random() * (Snowflake.MAX_MACHINE_ID + 1),
+    ),
+    datacenterId: number = Math.floor(
+      Math.random() * (Snowflake.MAX_DATACENTER_ID + 1),
+    ),
     epoch: string = "2023-01-01",
   ) {
     if (
-      datacenterId > Snowflake.MAX_DATACENTER_ID ||
-      machineId > Snowflake.MAX_MACHINE_ID
+      machineId > Snowflake.MAX_MACHINE_ID ||
+      datacenterId > Snowflake.MAX_DATACENTER_ID
     ) {
-      throw new Error("Datacenter ID or Machine ID out of range");
+      throw new Error("Machine ID or Datacenter ID out of range");
     }
-    this.datacenterId = datacenterId;
     this.machineId = machineId;
-    this.epoch = new Date(epoch).getTime();
+    this.datacenterId = datacenterId;
+    this.epoch = new Date(epoch + " UTC").getTime();
   }
 
   private getTimestamp(): number {
