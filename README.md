@@ -23,7 +23,7 @@ npm install @deloz/snowflake --save
 import Snowflake from "@deloz/snowflake";
 
 // Create an instance of Snowflake with custom datacenter ID, machine ID, and optional epoch
-const snowflake = new Snowflake(datacenterId, machineId, '2023-01-01');
+const snowflake = new Snowflake(datacenterId, machineId, "2023-01-01");
 
 const id = snowflake.generateId();
 console.log(id); // Output the generated Snowflake ID

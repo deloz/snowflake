@@ -1,6 +1,6 @@
 {
   "name": "@deloz/snowflake",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "A TypeScript library for generating Snowflake IDs.",
   "repository": {
     "type": "git",
@@ -24,7 +24,7 @@
   "homepage": "https://github.com/deloz/snowflake#readme",
   "main": "dist/Snowflake.js",
   "types": "dist/Snowflake.d.ts",
-  "module": "./dist/Snowflake.mjs",
+  "module": "dist/Snowflake.mjs",
   "scripts": {
     "build": "tsup",
     "dev": "tsup --watch",
@@ -33,9 +33,9 @@
   },
   "exports": {
     ".": {
-      "import": "./dist/index.mjs",
-      "require": "./dist/index.js",
-      "types": "./dist/index.d.ts"
+      "import": "./dist/Snowflake.mjs",
+      "require": "./dist/Snowflake.js",
+      "types": "./dist/Snowflake.d.ts"
     },
     "./package.json": "./package.json"
   },

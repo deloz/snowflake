@@ -23,7 +23,7 @@ npm install @deloz/snowflake --save
 import Snowflake from "@deloz/snowflake";
 
 // 创建一个 Snowflake 实例，传入自定义的数据中心 ID、机器 ID 和可选的起始时间
-const snowflake = new Snowflake(datacenterId, machineId, '2023-01-01');
+const snowflake = new Snowflake(datacenterId, machineId, "2023-01-01");
 
 const id = snowflake.generateId();
 console.log(id); // 输出生成的 Snowflake ID
